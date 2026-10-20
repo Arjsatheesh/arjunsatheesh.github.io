@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arjun Satheesh | IT Support &amp; Networking</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap">
+<style>
+:root{
+  box-sizing:border-box;color-scheme:dark;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#06141a;--deep:#0b3a4a;--teal:#1d7b95;--cream:#efe9d0;--ink:#f4f7f8;--muted:#a9bec7;--line:#24485a;
+  --display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+html{scroll-padding-top:70px;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--cream)}
+:focus-visible{outline:3px solid var(--cream);outline-offset:3px;border-radius:6px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:20}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:15;display:flex;align-items:center;gap:22px;padding:14px 4vw;background:linear-gradient(#06141aee,#06141a00)}
+.logo{font:400 30px/1 var(--display);letter-spacing:.06em;color:var(--cream);margin-right:auto;background:none;border:0;padding:0}
+nav a,nav .sw{color:var(--muted);text-decoration:none;font-size:14px;background:none;border:0;padding:0}
+nav a:hover,nav .sw:hover{color:#fff}
+@media(max-width:700px){nav a{display:none}}
+
+/* profile picker */
+#picker{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,#0f4c60,#06141a 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;overflow:auto}
+#picker[hidden]{display:none}
+#picker h1{font:400 clamp(2.4rem,7vw,4.5rem)/1 var(--display);margin:0 0 8px;letter-spacing:.03em}
+#picker p{color:var(--muted);margin:0 0 34px}
+.profiles{display:flex;gap:22px;flex-wrap:wrap;justify-content:center}
+.prof{background:none;border:0;width:140px;color:var(--muted);transition:color .2s}
+.prof span{display:grid;place-items:center;width:140px;height:140px;border-radius:14px;font-size:58px;margin-bottom:10px;border:3px solid transparent;transition:transform .2s,border-color .2s}
+.prof:hover,.prof:focus-visible{color:#fff}
+.prof:hover span,.prof:focus-visible span{border-color:var(--cream);transform:scale(1.06)}
+
+/* hero */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;padding:120px 4vw 70px;background:
+ radial-gradient(circle at 80% 25%,#2aa6c455,transparent 45%),radial-gradient(circle at 92% 75%,#ff6b5a40,transparent 35%),radial-gradient(circle at 60% 10%,#ffd16633,transparent 30%),
+ linear-gradient(135deg,var(--deep),#0a2733 60%,var(--bg));overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:160px;background:linear-gradient(transparent,var(--bg))}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);opacity:.9;animation:float 9s ease-in-out infinite}
+.o1{width:90px;height:90px;right:18%;top:24%;background:#ffd166}
+.o2{width:56px;height:56px;right:9%;top:52%;background:#ff6b5a;animation-delay:-3s}
+.o3{width:130px;height:130px;right:26%;top:56%;background:#7b61ff;animation-delay:-5s;opacity:.7}
+.o4{width:40px;height:40px;right:34%;top:18%;background:#3de0b0;animation-delay:-7s}
+@keyframes float{50%{transform:translateY(-22px)}}
+.hero-in{position:relative;z-index:2;max-width:640px}
+.hero h1{font:400 clamp(3.6rem,12vw,8rem)/.9 var(--display);letter-spacing:.02em;margin:0 0 6px;color:var(--cream)}
+.hero .role{font:400 clamp(1.4rem,3.5vw,2.2rem)/1.1 var(--display);letter-spacing:.14em;color:#fff;margin:0 0 16px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px;padding:0;list-style:none;font-size:14px;color:var(--muted)}
+.meta li:first-child{color:#3de0b0;font-weight:700}
+.meta li+li::before{content:"|";margin-right:10px;color:var(--line)}
+#greet{font-size:1.1rem;max-width:34em;margin:0 0 26px;color:#e3edf1}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:6px;border:0;font-weight:700;text-decoration:none;font-size:1rem}
+.btn.p{background:var(--cream);color:#06141a}
+.btn.s{background:#ffffff2b;color:#fff;backdrop-filter:blur(4px)}
+.btn:hover{filter:brightness(1.12)}
+
+/* rows */
+main{margin-top:-60px;position:relative;z-index:3;display:flex;flex-direction:column}
+.row{padding:14px 0 26px;position:relative}
+.row h2{font:400 1.9rem/1 var(--display);letter-spacing:.06em;margin:0 4vw 12px;color:var(--cream)}
+.track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;padding:14px 4vw 30px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.card{flex:0 0 auto;width:min(270px,72vw);height:165px;border-radius:10px;padding:16px;text-align:left;border:0;position:relative;overflow:hidden;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .25s,box-shadow .25s;color:#fff}
+.card .ic{position:absolute;top:10px;right:14px;font-size:52px;line-height:1;opacity:.95;transition:transform .3s}
+.card b{font:400 1.7rem/1 var(--display);letter-spacing:.04em;text-shadow:0 2px 8px #0006}
+.card small{display:block;font-size:13px;color:#ffffffd9;margin-top:4px}
+.card:hover,.card:focus-visible{transform:scale(1.09);z-index:4;box-shadow:0 14px 34px #000a}
+.card:hover .ic{transform:rotate(-10deg) scale(1.15)}
+.arr{position:absolute;top:46px;bottom:30px;width:4vw;min-width:44px;border:0;background:#06141acc;color:#fff;font-size:30px;z-index:6;opacity:0;transition:opacity .2s}
+.row:hover .arr{opacity:1}
+.arr.l{left:0}.arr.r{right:0}
+@media(hover:none){.arr{display:none}}
+
+/* modal */
+dialog{border:0;border-radius:14px;padding:0;width:min(560px,92vw);background:#0d2631;color:var(--ink);box-shadow:0 30px 80px #000c;overflow:hidden}
+dialog::backdrop{background:#000b}
+.mh{height:170px;display:grid;place-items:center;font-size:84px;position:relative}
+.mh h3{position:absolute;left:22px;bottom:12px;margin:0;font:400 2.3rem/1 var(--display);letter-spacing:.05em;text-shadow:0 2px 10px #0008}
+.mb{padding:20px 22px 24px}
+.mb .tags{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px;padding:0;list-style:none}
+.mb .tags li{font-size:13px;padding:3px 12px;border-radius:99px;background:#ffffff18}
+.mb p{margin:0 0 10px;color:#d6e3e8}
+.x{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;border:0;background:#000a;color:#fff;font-size:20px;z-index:3}
+
+footer{padding:40px 4vw 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);margin-top:20px}
+footer h2{font:400 2.2rem/1 var(--display);letter-spacing:.06em;color:var(--cream);margin:0 0 8px}
+footer p{max-width:36em;margin:0 0 16px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div id="picker" role="dialog" aria-modal="true" aria-labelledby="pt">
+  <h1 id="pt">Who’s watching?</h1>
+  <p>Pick a profile and I’ll show you the right things first.</p>
+  <div class="profiles">
+    <button class="prof" data-p="rec"><span style="background:#ff6b5a">🧑‍💼</span>Recruiter</button>
+    <button class="prof" data-p="tech"><span style="background:#7b61ff">🛠️</span>IT manager</button>
+    <button class="prof" data-p="log"><span style="background:#ffb703">📦</span>Logistics hiring</button>
+    <button class="prof" data-p="all"><span style="background:#2aa6c4">👋</span>Just browsing</button>
+  </div>
+</div>
+
+<nav>
+  <button class="logo" onclick="scrollTo({top:0})">ARJUN</button>
+  <a href="#r-experience">Experience</a><a href="#r-projects">Projects</a><a href="#r-logistics">Logistics</a><a href="#r-skills">Skills</a><a href="#contact">Contact</a>
+  <button class="sw" id="switch">Switch profile</button>
+</nav>
+
+<header class="hero">
+  <i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><i class="orb o4"></i>
+  <div class="hero-in">
+    <h1>Arjun Satheesh</h1>
+    <p class="role">IT SUPPORT, NETWORKING &amp; LOGISTICS</p>
+    <ul class="meta"><li>Available now</li><li>Sharjah, UAE</li><li>B.Tech CSE</li><li>4 languages</li></ul>
+    <p id="greet"></p>
+    <div class="btns">
+      <a class="btn p" href="mailto:arjunkrishnagudy1@gmail.com">▶ Hire me</a>
+      <button class="btn s" id="more">ⓘ More info</button>
+    </div>
+  </div>
+</header>
+
+<main id="rows"></main>
+
+<footer id="contact">
+  <h2>Ready to start</h2>
+  <p>I’m available immediately for IT support and logistics roles in the UAE. Email me or send a message on LinkedIn.</p>
+  <div class="btns">
+    <a class="btn p" href="mailto:arjunkrishnagudy1@gmail.com">arjunkrishnagudy1@gmail.com</a>
+    <a class="btn s" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <p style="margin-top:28px">© 2026 Arjun Satheesh</p>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dt">
+  <button class="x" aria-label="Close" onclick="dlg.close()">✕</button>
+  <div class="mh" id="dh"><span id="di"></span><h3 id="dt"></h3></div>
+  <div class="mb" id="db"></div>
+</dialog>
+
+<script>
+const G=(a,b)=>`linear-gradient(135deg,${a},${b})`;
+const DATA={
+ experience:{title:"Experience and education",items:[
+  {t:"DTDC Express",i:"📦",s:"Associate Operations · 2025–2026",c:G("#ff6b5a","#b8324a"),tags:["Troubleshooting","Excel","Reporting"],d:["Fixed hardware, software and network problems on branch workstations and peripherals to keep downtime low.","Tracked parcel workflows and daily dispatch with Excel and internal software, and produced daily reports for audits.","Handled warehouse receiving, stock audits and inventory reconciliation, coordinated last-mile deliveries and courier schedules, and resolved shipment delays."]},
+  {t:"Teklearn",i:"💻",s:"Frontend Developer Intern",c:G("#7b61ff","#3a2a9e"),tags:["Angular","Responsive UI"],d:["Built responsive web interfaces with Angular as part of a small development team."]},
+  {t:"B.Tech CSE",i:"🎓",s:"APJ Abdul Kalam Technological University · 2022–2025",c:G("#2aa6c4","#0b5a75"),tags:["Software","Databases","Network security"],d:["Computer Science and Engineering at Musaliar College of Engineering, Kerala. Covered software engineering, OOP, data structures, databases and network security."]},
+  {t:"Hardware Diploma",i:"🔧",s:"SBTE Kerala · 2020–2022",c:G("#ffb703","#c26a00"),tags:["Repair","OS deployment"],d:["Diploma in Computer Hardware Engineering: hardware diagnostics, component-level repair, system architecture and OS deployment."]}]},
+ logistics:{title:"Logistics and warehouse",items:[
+  {t:"Inventory control",i:"📦",s:"Stock audits and reconciliation",c:G("#ffb703","#c2410c"),tags:["Stock auditing","Reconciliation","Excel"],d:["Used Excel and tracking software for stock audits, inventory reconciliation and daily operational records."]},
+  {t:"Dispatch and receiving",i:"🚚",s:"Inbound and outbound",c:G("#ff6b5a","#9f1239"),tags:["Inbound","Outbound","Parcel dispatch"],d:["Ran daily warehouse, inbound and outbound receiving, and parcel dispatch for the branch with high shipment accuracy."]},
+  {t:"Parcel tracking",i:"🔎",s:"Freight and parcel visibility",c:G("#2aa6c4","#1e40af"),tags:["Freight tracking","Logistics systems"],d:["Tracked parcel workflows with internal management software so every shipment’s status was known."]},
+  {t:"Last-mile delivery",i:"🛵",s:"Drivers, couriers, exceptions",c:G("#3de0b0","#0f766e"),tags:["Fleet coordination","Courier schedules","Issue resolution"],d:["Coordinated last-mile deliveries and driver and courier schedules, and resolved shipment exceptions and delays promptly."]},
+  {t:"Audit reporting",i:"📋",s:"Excel · VLOOKUP · Pivot tables",c:G("#22c55e","#166534"),tags:["Advanced Excel","VLOOKUP","Pivot tables"],d:["Produced daily activity and audit reports and kept accurate digital records for performance tracking."]},
+  {t:"Systems and printers",i:"🖨️",s:"WMS, label printers, network",c:G("#7b61ff","#4c1d95"),tags:["WMS support","Label printers","Network"],d:["Supported branch hardware, label printers and network systems so operations were not held up by downtime."]},
+  {t:"Vendors and customers",i:"🤝",s:"Coordination and support",c:G("#f472b6","#9d174d"),tags:["Vendor relations","Customer support","Process improvement"],d:["Worked with vendors, customers and team members across functions to resolve service issues."]}]},
+ projects:{title:"Projects",items:[
+  {t:"Blind Walking Stick",i:"🦯",s:"IoT · Arduino",c:G("#3de0b0","#0a7a63"),tags:["Arduino Nano","C++","Ultrasonic sensors"],d:["A walking aid for visually impaired people. Ultrasonic sensors detect obstacles and audio feedback warns the user.","I wrote the embedded control software in C++."]},
+  {t:"Grade Vision AI",i:"🧠",s:"Machine learning · NLP",c:G("#7b61ff","#c13584"),tags:["Python","OCR","NLP"],d:["An automated evaluation system that reads descriptive answer papers with OCR and grades them using NLP."]},
+  {t:"RoadGuard Pro",i:"🚗",s:"Full-stack web app",c:G("#ff6b5a","#ffb703"),tags:["PHP","MySQL","JavaScript","HTML/CSS"],d:["A 24/7 emergency roadside assistance application, with a database-backed system for handling help requests."]}]},
+ skills:{title:"Skills",items:[
+  {t:"Hardware",i:"🖥️",s:"Diagnostics and repair",c:G("#ffb703","#e85d04"),tags:["Diagnostics","Installation","Printers"],d:["Finding faults in PCs and peripherals, replacing components, installing hardware and software, and printer troubleshooting."]},
+  {t:"Networking",i:"🌐",s:"TCP/IP · LAN/WAN",c:G("#2aa6c4","#1d4ed8"),tags:["TCP/IP","LAN/WAN","DNS","DHCP","Routing and switching"],d:["Tracing connectivity problems from cable to DNS, and configuring the basics of routing and switching."]},
+  {t:"Windows and M365",i:"🪟",s:"Windows 10/11 · Microsoft 365",c:G("#3b82f6","#1e3a8a"),tags:["Windows 10/11","Microsoft 365","Outlook"],d:["Setting up and supporting Windows systems and Microsoft 365 tools for everyday users."]},
+  {t:"Remote support",i:"🧑‍💻",s:"Help from anywhere",c:G("#3de0b0","#0f766e"),tags:["Remote desktop","User support"],d:["Supporting users over remote desktop and explaining fixes in plain language."]},
+  {t:"Code",i:"⌨️",s:"Python · JS · SQL · PHP",c:G("#7b61ff","#4c1d95"),tags:["Python","JavaScript","TypeScript","SQL","PHP","React","Angular","Git"],d:["Scripting and web development skills that help me automate tasks and understand how applications talk to databases."]},
+  {t:"Excel reporting",i:"📊",s:"Advanced Excel",c:G("#22c55e","#166534"),tags:["Excel","Reports","Data entry"],d:["Daily activity reports, record management and audit support using advanced Excel."]},
+  {t:"Security basics",i:"🔐",s:"Cybersecurity fundamentals",c:G("#ef4444","#7f1d1d"),tags:["Network protocols","Information assurance"],d:["Security fundamentals and network protocols, backed by a Coursera cybersecurity course."]}]},
+ certs:{title:"Certifications",items:[
+  {t:"Cyber Security",i:"🛡️",s:"Coursera · Ten Domains",c:G("#ef4444","#9a3412"),tags:["Coursera"],d:["Cyber Security &amp; Its Ten Domains."]},
+  {t:"Python",i:"🐍",s:"Great Learning Academy",c:G("#facc15","#a16207"),tags:["Fundamentals"],d:["Python Fundamentals for Beginners."]},
+  {t:"Deep Learning",i:"🤖",s:"Infosys Springboard",c:G("#7b61ff","#1e40af"),tags:["Introduction"],d:["Introduction to Deep Learning."]},
+  {t:"AI &amp; ML",i:"🔬",s:"IISc Bangalore · Workshop",c:G("#2aa6c4","#134e4a"),tags:["Workshop"],d:["AI &amp; ML Workshop at the Indian Institute of Science, Bangalore."]},
+  {t:"Prompt Engineering",i:"✨",s:"One Million Prompters",c:G("#ff6b5a","#be185d"),tags:["Dubai Future Foundation"],d:["Prompt Engineering for AI Systems, One Million Prompters Initiative."]},
+  {t:"Web Dev",i:"🌍",s:"Srishti Campus · Workshop",c:G("#3de0b0","#1d4ed8"),tags:["Workshop"],d:["Web Development Workshop at Srishti Campus."]}]}
+};
+const ORDER={rec:["experience","logistics","skills","projects","certs"],tech:["projects","skills","experience","logistics","certs"],log:["logistics","experience","skills","certs","projects"],all:["projects","experience","logistics","skills","certs"]};
+const GREET={
+ rec:"First-time IT support hire who has already done the job: one year fixing hardware, software and network problems for a busy branch, plus a computer science degree.",
+ tech:"I can trace a fault from the cable to DNS. Scroll to see the hardware, networking and project work behind my CV.",
+ all:"I fix computers and networks, build small apps and like explaining things clearly. Have a look around.",
+ log:"A year running daily dispatch, parcel tracking and stock audits at a busy branch, with Excel reporting and the IT skills to keep the systems running."
+};
+const rows=document.getElementById("rows"),dlg=document.getElementById("dlg");
+function openCard(it){
+  document.getElementById("dh").style.background=it.c;
+  document.getElementById("di").innerHTML=it.i;
+  document.getElementById("dt").innerHTML=it.t;
+  document.getElementById("db").innerHTML='<ul class="tags">'+it.tags.map(t=>"<li>"+t+"</li>").join("")+"</ul>"+it.d.map(p=>"<p>"+p+"</p>").join("");
+  dlg.showModal();
+}
+function build(p){
+  rows.innerHTML="";
+  ORDER[p].forEach(k=>{
+    const d=DATA[k],s=document.createElement("section");
+    s.className="row";s.id="r-"+k;
+    s.innerHTML='<h2>'+d.title+'</h2><button class="arr l" aria-label="Scroll left">‹</button><div class="track"></div><button class="arr r" aria-label="Scroll right">›</button>';
+    const tr=s.querySelector(".track");
+    d.items.forEach(it=>{
+      const b=document.createElement("button");
+      b.className="card";b.style.background=it.c;
+      b.innerHTML='<span class="ic">'+it.i+'</span><b>'+it.t+'</b><small>'+it.s+'</small>';
+      b.onclick=()=>openCard(it);tr.appendChild(b);
+    });
+    s.querySelector(".l").onclick=()=>tr.scrollBy({left:-tr.clientWidth*.8,behavior:"smooth"});
+    s.querySelector(".r").onclick=()=>tr.scrollBy({left:tr.clientWidth*.8,behavior:"smooth"});
+    rows.appendChild(s);
+  });
+  document.getElementById("greet").textContent=GREET[p];
+}
+const picker=document.getElementById("picker");
+document.querySelectorAll(".prof").forEach(b=>b.onclick=()=>{build(b.dataset.p);picker.hidden=true;scrollTo({top:0})});
+document.getElementById("switch").onclick=()=>{picker.hidden=false};
+document.getElementById("more").onclick=()=>openCard({i:"👋",t:"About Arjun",c:G("#1d7b95","#0b3a4a"),tags:["Sharjah, UAE","Available immediately","Malayalam","English","Hindi","Tamil"],d:["I started with computer hardware at diploma level, then moved into software and networking through my engineering degree.","For the past year I handled branch operations at DTDC Express and was the person colleagues called when a workstation, printer or network connection stopped working.","I’m looking for my first full-time role in the UAE, in IT support or logistics operations."]});
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+build("all");
+</script>
+</body>
+</html>
